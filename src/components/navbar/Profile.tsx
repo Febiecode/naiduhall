@@ -3,14 +3,8 @@ import ProfileWithStatus from '../atoms/ProfileWithStatus'
 import NameRoleComponent from '../atoms/NameRole'
 
 import * as LucideIcons from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
+
+
 import ProfileDropDown from '../molecules/ProfileDropDown';
 
 const Profile = () => {
@@ -27,13 +21,14 @@ const Profile = () => {
   ];
   return (
     <div className='flex items-center'>
-      <div>
+
         <ProfileWithStatus imageUrl={require('../../../public/profile.svg')} online={true} />
-      </div>
-      <div className="lg:ms-2 md:ms-1">
+        
+
+      <div className="lg:mx-3 xl:mx-5 md:mx-2">
         <NameRoleComponent name="Jay Hargudson" role="Manager" />
       </div>
-      <div className="lg:ms-2 md:ms-1">
+      <div className="xl:ms-1">
       <ProfileDropDown />
       </div>
     </div>
