@@ -26,14 +26,14 @@ const Profile = () => {
     // 'mail',
   ];
   return (
-    <div className='h-10 col-span-3 flex items-center justify-center'>
+    <div className='flex items-center'>
       <div>
         <ProfileWithStatus imageUrl={require('../../../public/profile.svg')} online={true} />
       </div>
-      <div className="ms-5">
+      <div className="lg:ms-2 md:ms-1">
         <NameRoleComponent name="Jay Hargudson" role="Manager" />
       </div>
-      <div className="ms-5">
+      <div className="lg:ms-2 md:ms-1">
       <ProfileDropDown />
       </div>
     </div>

@@ -11,11 +11,11 @@ const NavIcons = () => {
     // 'mail',
   ];
   return (
-    <div className='h-10 col-span-3 flex justify-end items-center'>
-      <div className="flex justify-center items-center">
+
+      <div className="flex items-center">
         {iconNames.map((Icon, index) => (
-          <div key={index} className="relative mx-5">
-            <Icon size="24" />
+          <div key={index} className="relative lg:mx-5 md:mx-2">
+            <Icon size="18" />
             {(index === 1 || index === 2) && (
               <span className="bg-primary-blue text-white rounded-full w-4 h-4 text-xs absolute -top-1 -right-1 flex justify-center items-center">
                 5 {/* Replace this with your actual notification count */}
@@ -24,9 +24,8 @@ const NavIcons = () => {
             
           </div>
         ))}
-        <Image src={require('../../../public/usa.svg')} alt="Profile" className="w-10 h-10 rounded-full"/>
+        <Image src={require('../../../public/usa.svg')} alt="Profile" className="w-8 h-8 rounded-full"/>
       </div>
-    </div>
   )
 }
 
