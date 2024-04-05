@@ -17,13 +17,26 @@
 .main {
   margin-left: 10px; /* Adjust for the sidebar width */
   width: calc(100% - 264px); /* Adjust for the sidebar width */
-  /* Add any other styles you need */
+  display: flex;
+  justify-content: center;
 }
 /* styles/SideBar.module.css */
 .sidebar {
   width: 264px;
   height: 100vh;
   /* Add any other styles you need */
+}
+
+@media screen and (max-width: 760px){
+  .main {
+    width: 100%; /* Adjust for the sidebar width */
+    /* Add any other styles you need */
+  }
+  .sidebar {
+    width: 0;
+    height: 0;
+    /* Add any other styles you need */
+  }
 }
 
 .layout {
