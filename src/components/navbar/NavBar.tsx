@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 const NavBar = () => {
     return (
-        <div className="grid grid-cols-12 gap-4 h-10 w-[98%] mt-3 place-items-center">
+        <div className="grid grid-cols-12 gap-4 h-10 w-[98%] mt-6 place-items-center">
             <div className="h-10 w-full col-span-5">
             <TransparentSearchBar />
             </div>
