@@ -90,7 +90,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className={`fixed top-0 left-0 h-screen w-64 text-gray-600 bg-white shadow-lg z-10 ${isOpen ? 'block' : 'hidden md:block'}`}>
+      <div className={`fixed top-0 left-0 h-screen w-64 text-gray-600 bg-white z-10 ${isOpen ? 'block' : 'hidden md:block'}`}>
       <div className="flex justify-between items-center md:hidden">
         <Image className="w-10 h-10 rounded-full" src={require('../../../public/profile.svg')} alt="Logo"/>
         {/* <button className="text-black focus:outline-none" onClick={toggleMenu}>
