@@ -2,16 +2,20 @@ import React from 'react'
 import NavBar from '../navbar/NavBar'
 import WelcomeSelectDate from '../molecules/WelcomeSelectDate'
 import CardsList from '../molecules/CardList'
+import ChartSection from '../molecules/ChartSection'
 
 const Dashboard = () => {
   return (
     <>
-       <div className="customMain">
-       <NavBar />
-       <WelcomeSelectDate />
-       <CardsList />
-       </div>
-        
+      <section className="customMain">
+        <NavBar />
+        <WelcomeSelectDate />
+        <CardsList />
+        <ChartSection />
+
+      </section>
+
+
     </>
   )
 }

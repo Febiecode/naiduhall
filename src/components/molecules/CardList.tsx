@@ -18,10 +18,7 @@ const CardsList = () => {
                     {cardsData.map((card, index) => (
                         <Card key={index} {...card} />
                     ))}
-
                 </div>
-
-
             </div>
 
         </>
