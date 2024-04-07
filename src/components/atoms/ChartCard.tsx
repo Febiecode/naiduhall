@@ -11,7 +11,7 @@ interface ChartCardProps {
 
 const ChartCard: React.FC<ChartCardProps> = ({ title, icon, rate, value }) => {
     return (
-        <div className="max-w-xs rounded overflow-hidden py-4">
+        <div className="max-w-xs rounded overflow-hidden pt-2">
 
             <div className="flex">
                 <div className="w-12 h-12 flex justify-start">

@@ -13,7 +13,7 @@ const ChartCardList = () => {
     return (
 
         <>
-            <div className="grid grid-cols-12 gap-4 w-[98%] my-10">
+            <div className="grid grid-cols-12 gap-4 w-[98%] my-3">
                 <div className="w-full col-span-12 flex flex-wrap flex-row justify-between">
                     {cardsData.map((card, index) => (
                         <ChartCard key={index} {...card} />
