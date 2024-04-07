@@ -25,7 +25,9 @@
     "react-dom": "^18",
     "styled-components": "^6.1.8",
     "tailwind-merge": "^2.2.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "victory": "^37.0.2",
+    "victory-chart": "^22.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

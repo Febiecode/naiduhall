@@ -1,6 +1,4 @@
 import React from "react";
-
-import Card from "../atoms/Card";
 import ChartCard from "../atoms/ChartCard";
 
 const ChartCardList = () => {
