@@ -4,8 +4,8 @@ import ChartCardList from './ChartCardList'
 import ChartSectionHearder from '../molecules/ChartSectionHearder'
 import BubbleChart from '../atoms/charts/BubbleChart'
 import BarChart from '../atoms/charts/BarChart'
-import StatusCardTitle from '../atoms/StatusCardTitle'
-import StatusCardFooter from '../atoms/StatusCardFooter'
+import StatusCardTitle from '../atoms/charts/StatusCardTitle'
+import StatusCardFooter from '../atoms/charts/StatusCardFooter'
 
 
 const progress = 50; // green

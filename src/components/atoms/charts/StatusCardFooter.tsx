@@ -1,9 +1,9 @@
 import React from 'react'
 import Image from 'next/image';
 const StatusCardFooter = () => {
-    const orangeDot = require("../../../public/orangeDot.svg")
-    const greenDot = require("../../../public/greenDot.svg")
-    const tomeDot = require("../../../public/tomeDot.svg")
+    const orangeDot = require("../../../../public/orangeDot.svg")
+    const greenDot = require("../../../../public/greenDot.svg")
+    const tomeDot = require("../../../../public/tomeDot.svg")
     return (
         <>
             <div className='w-full flex flex-col'>

@@ -1,5 +1,5 @@
 import React from "react";
-import ChartCard from "../atoms/ChartCard";
+import ChartCard from "../atoms/charts/ChartCard";
 
 const ChartCardList = () => {
     const cardsData = [

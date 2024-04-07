@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 const StatusCardTitle = () => {
-    const icon = require('../../../public/ellipsis-vertical.svg')
+    const icon = require('../../../../public/ellipsis-vertical.svg')
     return (
         <>
             <div className='w-full flex justify-between'>
