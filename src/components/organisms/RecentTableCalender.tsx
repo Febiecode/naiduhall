@@ -1,5 +1,6 @@
 import React from 'react'
 import RecentProject from '../molecules/table/RecentProject'
+import CalenderEvents from '../molecules/CalenderEvents'
 
 
 const RecentTableCalender = () => {
@@ -10,7 +11,7 @@ const RecentTableCalender = () => {
           <RecentProject />
         </div>
         <div className="w-full col-span-4 flex flex-wrap flex-row justify-between bg-white p-5 rounded-lg">
-          Calender
+          <CalenderEvents />
         </div>
       </div>
     </>
