@@ -64,6 +64,18 @@ const Calendar: React.FC = () => {
     return dayNames[dayIndex];
   };
 
+  const isDayWithEvent = (day: number) => {
+    return events.some((event) => {
+      const [eventYear, eventMonth, eventDay] = event.date.split('-').map(Number);
+      return eventYear === year && eventMonth === month + 1 && eventDay === day;
+    });
+  };
+
+  const filteredEvents = events.filter((event) => {
+    const [eventYear, eventMonth] = event.date.split('-').map(Number);
+    return eventYear === year && eventMonth === month + 1;
+  });
+
   const firstDayOfMonth = new Date(year, month, 1).getDay();
 
   const headers = dayNames.map((dayName) => (
@@ -71,13 +83,6 @@ const Calendar: React.FC = () => {
       {dayName}
     </div>
   ));
-
-  const isDayWithEvent = (day: number) => {
-    return events.some((event) => {
-      const [eventYear, eventMonth, eventDay] = event.date.split('-').map(Number);
-      return eventYear === year && eventMonth === month + 1 && eventDay === day;
-    });
-  };
 
   return (
     <div className="mx-auto max-w-lg">
@@ -128,7 +133,7 @@ const Calendar: React.FC = () => {
       <div className="mt-4 h-40 overflow-y-auto">
         <h2 className="text-lg font-semibold">Events</h2>
         <ul>
-          {events.map((event, index) => (
+          {filteredEvents.map((event, index) => (
             <li key={index}>
               {event.date}: {event.text}
             </li>
