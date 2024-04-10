@@ -25,7 +25,7 @@ const Profile = () => {
         <ProfileWithStatus imageUrl={require('../../../public/profile.svg')} online={true} />
         
 
-      <div className="lg:mx-3 xl:mx-5 md:mx-2">
+      <div className="lg:mx-3 xl:mx-5 md:mx-2 xxsm:ms-2">
         <NameRoleComponent name="Jay Hargudson" role="Manager" />
       </div>
       <div className="xl:ms-1">
