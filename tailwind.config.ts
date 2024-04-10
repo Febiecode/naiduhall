@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        'xxsm': '320px',
+        'xsm': '375px',
+        // => @media (min-width: 992px) { ... }
+      },
       colors: {
         'primary-custom-purple': '#F4ECFB',
         'custom-purple': '#883DCF',

@@ -17,7 +17,7 @@
   /* Add any other styles you need */
 }
 
-@media screen and (max-width: 760px){
+@media screen and (max-width: 1020px){
   .customMain {
     width: 100%;
     background-color: #f6f5fb;

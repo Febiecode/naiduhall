@@ -14,7 +14,7 @@ const CardsList = () => {
 
         <>
             <div className="grid grid-cols-12 gap-4 w-[98%] mt-10">
-                <div className="w-full col-span-12 flex flex-wrap flex-row justify-between">
+                <div className="w-full col-span-12 flex flex-wrap flex-row  xxsm:justify-center md:justify-around lg:justify-between xl:justify-between xxl:justify-between ">
                     {cardsData.map((card, index) => (
                         <Card key={index} {...card} />
                     ))}

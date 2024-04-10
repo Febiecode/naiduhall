@@ -8,13 +8,13 @@ import RecentProject from '../organisms/RecentTableCalender'
 const Dashboard = () => {
   return (
     <>
-      <section className="customMain">
+      
         <NavBar />
         <WelcomeSelectDate />
         <CardsList />
         <ChartSection />
         <RecentProject />
-      </section>
+
     </>
   )
 }
