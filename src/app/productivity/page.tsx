@@ -1,15 +1,9 @@
 import React from 'react'
-import Sidebar from "../../components/sidebar/SideBar"
-import Productivity from '@/components/Productivity/Productivitycomponents'
-
+import Productivity from '@/components/main/Productivitycomponents'
 
 const page = () => {
     return (
-        
-
         <Productivity />
-
-
     )
 }
 

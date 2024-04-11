@@ -2,21 +2,9 @@
 
 import * as React from "react"
 
-import { CalendarIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-
-import { cn } from "../../../../@/lib/utils"
-import { Calendar } from "../../../components/ui/calendar"
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "../../ui/popover"
-
 import {
     CaretSortIcon,
     ChevronDownIcon,
-    DotsHorizontalIcon,
 } from "@radix-ui/react-icons"
 import {
     ColumnDef,
@@ -31,18 +19,14 @@ import {
     useReactTable,
 } from "@tanstack/react-table"
 
-import { Button } from "../../../components/ui/button"
-import { Checkbox } from "../../../components/ui/checkbox"
+import { Button } from "../../ui/button"
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
     DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
-} from "../../../components/ui/dropdown-menu"
-import { Input } from "../../../components/ui/input"
+} from "../../ui/dropdown-menu"
+import { Input } from "../../ui/input"
 import {
     Table,
     TableBody,
@@ -50,7 +34,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "../../../components/ui/table"
+} from "../../ui/table"
 
 
 
@@ -213,13 +197,11 @@ export const columns: ColumnDef<RecentProject>[] = [
     
 ]
 
-const CustomTable = () => {
+const RecentTable = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
     const [sorting, setSorting] = React.useState<SortingState>([])
-    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-        []
-    )
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
@@ -391,4 +373,4 @@ const CustomTable = () => {
     )
 }
 
-export default CustomTable;
+export default RecentTable;

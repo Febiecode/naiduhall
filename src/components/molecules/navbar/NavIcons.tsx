@@ -24,7 +24,7 @@ const NavIcons = () => {
             
           </div>
         ))}
-        <Image src={require('../../../public/usa.svg')} alt="Profile" className="w-9 h-9 rounded-full"/>
+        <Image src={require('../../../../public/usa.svg')} alt="Profile" className="w-9 h-9 rounded-full"/>
       </div>
   )
 }

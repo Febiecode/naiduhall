@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import NavBar from '../navbar/NavBar'
+import NavBar from '../molecules/navbar/NavBar'
 
 const Productivity = () => {
   return (

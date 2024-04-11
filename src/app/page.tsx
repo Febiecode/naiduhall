@@ -1,18 +1,11 @@
 "use client"
-import Dashboard from "../components/Dashboard/Dashboard";
-import Sidebar from "../components/sidebar/SideBar";
-
+import Dashboard from "../components/main/Dashboard";
 
 export default function Home() {
 
   return (
     <>
-
-
-
         <Dashboard />
-
-
     </>
   );
 }

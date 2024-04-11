@@ -3,7 +3,7 @@ import Image from 'next/image';
 const TransparentSearchBar = () => {
     return (
             <div className="relative flex items-center">
-           <Image src={require('../../../public/search.svg')} alt='search'/>
+           <Image src={require('../../../../public/search.svg')} alt='search'/>
             <input
                 type="text"
                 placeholder="Search..."

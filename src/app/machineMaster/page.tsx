@@ -1,6 +1,5 @@
 import React from 'react'
-import Sidebar from "../../components/sidebar/SideBar"
-import MachineMaster from '@/components/MachineMaster/MachineMastercomponents'
+import MachineMaster from '@/components/main/MachineMastercomponents'
 
 const page = () => {
     return (

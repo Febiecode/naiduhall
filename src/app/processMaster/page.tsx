@@ -1,6 +1,5 @@
 import React from 'react'
-import Sidebar from "../../components/sidebar/SideBar"
-import ProcessMaster from '@/components/ProcessMaster/ProcessMastercomponents'
+import ProcessMaster from '@/components/main/ProcessMastercomponents'
 
 const page = () => {
     return (

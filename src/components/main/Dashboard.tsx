@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../navbar/NavBar'
+import NavBar from '../molecules/navbar/NavBar'
 import WelcomeSelectDate from '../molecules/WelcomeSelectDate'
 import CardsList from '../molecules/CardList'
 import ChartSection from '../molecules/ChartSection'

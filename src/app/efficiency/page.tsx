@@ -1,6 +1,5 @@
 import React from 'react'
-import Sidebar from "../../components/sidebar/SideBar"
-import Efficiency from '@/components/Efficiency/Efficiencycomponents'
+import Efficiency from '@/components/main/Efficiencycomponents'
 
 const page = () => {
     return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TransparentSearchBar from './TransparentSearchBar'
 import NavIcons from './NavIcons'
 import Profile from './Profile'
@@ -9,11 +9,8 @@ import Image from 'next/image';
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
-} from "../../components/ui/sheet"
+} from "../../ui/sheet"
 import Sidebar from '../sidebar/SideBar'
 
 
@@ -27,7 +24,7 @@ const NavBar = () => {
                         <SheetTrigger><Menu size={30} className='me-3' /></SheetTrigger>
                         <SheetContent className="w-[300px] sm:w-[300px]">
                             <div className="flex justify-center">
-                                <Image className="w-20 h-20 " src={require('../../../public/next.svg')} alt="Logo" />
+                                <Image className="w-20 h-20 " src={require('../../../../public/next.svg')} alt="Logo" />
                             </div>
                             <Sidebar />
                         </SheetContent>
@@ -45,7 +42,7 @@ const NavBar = () => {
                     <NavIcons />
                 </div>
                 <div>
-                    <Image src={require('../../../public/Divider.svg')} alt='divider' />
+                    <Image src={require('../../../../public/Divider.svg')} alt='divider' />
                 </div>
                 <div className='lg:px-2'>
                     <Profile />

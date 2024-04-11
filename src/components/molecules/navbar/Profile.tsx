@@ -1,12 +1,12 @@
 "use client"
 import React, { useState } from 'react'
-import ProfileWithStatus from '../atoms/ProfileWithStatus'
-import NameRoleComponent from '../atoms/NameRole'
+import ProfileWithStatus from '../../atoms/ProfileWithStatus'
+import NameRoleComponent from '../../atoms/NameRole'
 
 import * as LucideIcons from 'lucide-react';
 
 
-import ProfileDropDown from '../molecules/ProfileDropDown';
+import ProfileDropDown from '../ProfileDropDown';
 
 const Profile = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -23,7 +23,7 @@ const Profile = () => {
   return (
     <div className='flex items-center'>
 
-        <ProfileWithStatus imageUrl={require('../../../public/profile.svg')} online={true} />
+        <ProfileWithStatus imageUrl={require('../../../../public/profile.svg')} online={true} />
         
 
       <div className="lg:mx-3 xl:mx-5 md:mx-2 xxsm:ms-2">
