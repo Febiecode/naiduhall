@@ -1,11 +1,12 @@
 import React from 'react'
+import NavBar from '../navbar/NavBar'
 
 const Efficiency = () => {
   return (
     <>
-        <div className="main">
-        <h1>Efficiency</h1>
-        </div>
+
+        <NavBar />
+
     </>
   )
 }

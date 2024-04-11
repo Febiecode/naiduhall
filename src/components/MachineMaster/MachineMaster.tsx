@@ -1,11 +1,10 @@
 import React from 'react'
+import NavBar from '../navbar/NavBar'
 
 const MachineMaster = () => {
   return (
     <>
-        <div className="main">
-            <h1>Machine Master</h1>
-        </div>
+        <NavBar />
     </>
   )
 }

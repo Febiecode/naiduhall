@@ -88,13 +88,13 @@ const Sidebar = () => {
 
   return (
 
-      <div>
+      <div className="sidebar ">
       
-      <div className="flex flex-col  space-y-10 w-full">
+      <div className="flex flex-col w-full">
       <div className="flex justify-center">
       <Image className="w-20 h-20 " src={require('../../../public/next.svg')} alt="Logo"/>
       </div>
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 w-[300px]">
           {items.map((item, index) => (
             <SidebarItem key={index} item={item} />
           ))}

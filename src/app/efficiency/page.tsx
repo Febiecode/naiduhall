@@ -4,10 +4,7 @@ import Efficiency from '@/components/Efficiency/Efficiencycomponents'
 
 const page = () => {
     return (
-        <div className="layout">
-            <Sidebar />
-            <Efficiency />
-        </div>
+        <Efficiency />
     )
 }
 

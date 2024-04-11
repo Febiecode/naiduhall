@@ -1,11 +1,14 @@
+"use client"
 import React from 'react'
+import NavBar from '../navbar/NavBar'
 
 const Productivity = () => {
   return (
     <>
-      <div className="main">
-      <h1>Productivity</h1>
-      </div>
+
+      <NavBar />
+
+
     </>
   )
 }

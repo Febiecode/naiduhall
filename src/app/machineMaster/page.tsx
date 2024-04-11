@@ -4,10 +4,7 @@ import MachineMaster from '@/components/MachineMaster/MachineMastercomponents'
 
 const page = () => {
     return (
-        <div className="layout">
-            <Sidebar />
-            <MachineMaster />
-        </div>
+        <MachineMaster />
     )
 }
 

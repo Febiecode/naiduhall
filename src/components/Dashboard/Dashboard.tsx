@@ -9,11 +9,13 @@ const Dashboard = () => {
   return (
     <>
       
+        
         <NavBar />
         <WelcomeSelectDate />
         <CardsList />
         <ChartSection />
         <RecentProject />
+
 
     </>
   )

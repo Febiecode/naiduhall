@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import ProfileWithStatus from '../atoms/ProfileWithStatus'
 import NameRoleComponent from '../atoms/NameRole'

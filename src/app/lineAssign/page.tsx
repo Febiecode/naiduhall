@@ -4,10 +4,7 @@ import LineAssign from '@/components/LineAssign/LineAssigncomponents'
 
 const page = () => {
     return (
-        <div className="layout">
-            <Sidebar />
-            <LineAssign />
-        </div>
+        <LineAssign />
     )
 }
 

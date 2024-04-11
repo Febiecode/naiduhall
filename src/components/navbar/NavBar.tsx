@@ -19,12 +19,16 @@ import Sidebar from '../sidebar/SideBar'
 
 const NavBar = () => {
     return (
-        <div className="grid grid-cols-12 gap-4 h-10 w-[98%] mt-6 place-items-center">
+        <div className="grid grid-cols-12 gap-4 w-full mt-6 place-items-center">
             <div className=" flex items-center w-full col-span-5">
                 <div className='lg:hidden xl:hidden md:block items-center'>
+
                     <Sheet >
-                        <SheetTrigger><Menu size={30} className='me-3'/></SheetTrigger>
-                        <SheetContent className="w-[250px] sm:w-[250px]">
+                        <SheetTrigger><Menu size={30} className='me-3' /></SheetTrigger>
+                        <SheetContent className="w-[300px] sm:w-[300px]">
+                            <div className="flex justify-center">
+                                <Image className="w-20 h-20 " src={require('../../../public/next.svg')} alt="Logo" />
+                            </div>
                             <Sidebar />
                         </SheetContent>
                     </Sheet>
@@ -32,7 +36,7 @@ const NavBar = () => {
                 </div>
 
                 <div className='xxsm: hidden lg:block xl:block xxl:block'>
-                <TransparentSearchBar />
+                    <TransparentSearchBar />
                 </div>
             </div>
 
