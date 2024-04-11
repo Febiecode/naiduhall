@@ -2,7 +2,7 @@ import React from 'react'
 import NavBar from '../molecules/navbar/NavBar'
 import WelcomeSelectDate from '../molecules/WelcomeSelectDate'
 import CardsList from '../molecules/CardList'
-import ChartSection from '../molecules/ChartSection'
+import ChartSection from '../organisms/ChartSection'
 import RecentProject from '../organisms/RecentTableCalender'
 
 const Dashboard = () => {

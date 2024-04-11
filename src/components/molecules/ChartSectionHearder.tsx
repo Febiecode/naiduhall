@@ -1,5 +1,5 @@
 import React from 'react'
-import ChartMenu from './ChartMenu'
+import ChartMenu from '../atoms/charts/ChartMenu'
 
 const ChartSectionHearder = () => {
     return (

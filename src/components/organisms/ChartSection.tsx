@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ChartCardList from './ChartCardList'
+import ChartCardList from '../molecules/ChartCardList'
 import ChartSectionHearder from '../molecules/ChartSectionHearder'
 import BubbleChart from '../atoms/charts/BubbleChart'
 import BarChart from '../atoms/charts/BarChart'
