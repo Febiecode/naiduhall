@@ -1,11 +1,12 @@
 import React from 'react'
+import NavBar from '../molecules/navbar/NavBar'
+import ProcessTable from '../molecules/table/ProcessTable'
 
 const ProcessMaster = () => {
     return (
         <>
-            <div className="main">
-                <h1>Process Master</h1>
-            </div>
+            <NavBar />
+            <ProcessTable />
         </>
     )
 }
