@@ -62,7 +62,7 @@ const PostResponse: React.FC = () => {
                 </div>
             </div>
             {response && (
-                <div className='mt-4 border border-blue-500 rounded-lg p-5 bg-gray-100'>
+                <div className='mt-4 border border-blue-500 rounded-lg p-5 bg-[#F1F5F9]'>
                     <div className='p-4'>{response}</div>
                 </div>
             )}
