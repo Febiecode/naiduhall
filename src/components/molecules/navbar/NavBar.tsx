@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import TransparentSearchBar from './TransparentSearchBar'
 import NavIcons from './NavIcons'

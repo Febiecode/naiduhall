@@ -4,17 +4,27 @@ import WelcomeSelectDate from '../molecules/WelcomeSelectDate'
 import CardsList from '../molecules/CardList'
 import ChartSection from '../organisms/ChartSection'
 import RecentProject from '../organisms/RecentTableCalender'
+import Sidebar from "@/components/molecules/sidebar/SideBarcomponents";
 
 const Dashboard = () => {
   return (
     <>
-      
-        
-        <NavBar />
-        <WelcomeSelectDate />
-        <CardsList />
-        <ChartSection />
-        <RecentProject />
+
+      <div className="layout">
+        <div className="sidebar">
+          <Sidebar />
+        </div>
+        <div className="customMain">
+          <NavBar />
+          <WelcomeSelectDate />
+          <CardsList />
+          <ChartSection />
+          <RecentProject />
+        </div>
+      </div>
+
+
+
 
 
     </>
