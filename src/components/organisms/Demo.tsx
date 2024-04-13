@@ -1,12 +1,11 @@
 "use client"
 import React, { useState } from 'react';
-import ProfileWithStatus from '../../../src/components/atoms/ProfileWithStatus';
-import NameRoleComponent from '../../../src/components/atoms/NameRole';
+import ProfileWithStatus from '../../../src/components/atoms/ProfileWithStatus'
+import NameRoleComponent from '../../../src/components/atoms/NameRole'
 
 const PostResponse: React.FC = () => {
     const [question, setQuestion] = useState('');
     const [response, setResponse] = useState('');
-    const [previousQuestions, setPreviousQuestions] = useState<string[]>([]);
 
     const handleSubmit = async () => {
         try {
@@ -18,26 +17,25 @@ const PostResponse: React.FC = () => {
 
             const responseData = await response.json();
             // Simulate a response based on the user's question
-            setResponse(responseData.title);
-            // Save the current question to previous questions
-            setPreviousQuestions(prevQuestions => [...prevQuestions, question]);
-            // Clear the question field
-            setQuestion('');
+            setResponse(`${responseData.title}`);
         } catch (error) {
             console.error('Error:', error);
             setResponse('Sorry, something went wrong. Please try again later.');
         }
     };
 
-    const profileImg = require('../../../public/profile.svg');
+    const profileImg = require('../../../public/profile.svg')
 
     return (
         <div className='container mx-auto mt-8'>
             <div className='flex justify-between'>
                 <div className=' w-full flex justify-between'>
-                    <h1 className='text-xl font-bold items-center'>ERP Answers</h1>
+                    <h1 className='text-xl font-bold items-center'>Title</h1>
                     <div className='flex items-center'>
+
                         <ProfileWithStatus imageUrl={profileImg} online={true} />
+
+
                         <div className="lg:mx-3 xl:mx-5 md:mx-2 xxsm:ms-2">
                             <NameRoleComponent name="Jay Hargudson" role="" />
                         </div>
@@ -45,7 +43,7 @@ const PostResponse: React.FC = () => {
                 </div>
             </div>
             <hr className='my-4 border-gray-300' />
-            <div className='bg-[#F1F5F9] rounded-lg p-4'>
+            <div className='bg-gray-100 rounded-lg p-4'>
                 <div className='text-left'>
                     <h2 className='text-lg font-semibold'>Post Your Question</h2>
                     <textarea
@@ -64,22 +62,15 @@ const PostResponse: React.FC = () => {
                 </div>
             </div>
             {response && (
-                <div className='mt-4 border border-blue-500 rounded-lg p-5 bg-[#F1F5F9]'>
+                <div className='mt-4 border border-blue-500 rounded-lg p-5 bg-gray-100'>
                     <div className='p-4'>{response}</div>
-
                 </div>
             )}
-            {/* Separate div for previous questions */}
-            <div className='mt-4 bg-[#F1F5F9] p-5 rounded-lg border border-blue-500'>
-                <h3 className='text-lg font-semibold mb-2'>Previous Questions</h3>
-                {previousQuestions.map((prevQuestion, index) => (
-                    <div key={index} className='rounded-md bg-white p-2 my-5 border border-gray-300 '>
-                        {prevQuestion}
-                    </div>
-                ))}
-            </div>
         </div>
     );
 };
 
 export default PostResponse;
+
+
+
