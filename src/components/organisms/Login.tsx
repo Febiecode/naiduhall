@@ -74,7 +74,7 @@ const Login = () => {
                             <h1 className='text-[30px] font-semibold my-2'>Product Logo</h1>
 
                             <h1 className='font-semibold text-xl my-2'>Get Starter with Naiduhall</h1>
-                            <h1 className='text-gray-400 mb-5 text-sm'>Welcome! Let's get started!</h1>
+                            <h1 className='text-gray-400 mb-5 text-sm'>Welcome<span>&#33;</span> Let&apos;s get started<span>&#33;</span></h1>
                         </div>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
