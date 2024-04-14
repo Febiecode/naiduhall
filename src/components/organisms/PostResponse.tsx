@@ -6,7 +6,7 @@ import NameRoleComponent from '../../../src/components/atoms/NameRole';
 const PostResponse: React.FC = () => {
     const [question, setQuestion] = useState('');
     const [response, setResponse] = useState('');
-    const [previousQuestions, setPreviousQuestions] = useState<string[]>([]);
+    const [previousQuestions, setPreviousQuestions] = useState<string[]>(["What is Vue", "Is js single-threaded or multi-threaded", "Event Loop?"]);
 
     const handleSubmit = async () => {
         if (question.trim() === '') {
@@ -23,9 +23,9 @@ const PostResponse: React.FC = () => {
             const responseData = await response.json();
             // Simulate a response based on the user's question
             setResponse(responseData.title);
-            // Save the current question to previous questions
-            setPreviousQuestions(prevQuestions => [...prevQuestions, question]);
-            // Clear the question field
+          
+            // setPreviousQuestions(prevQuestions => [...prevQuestions, question]);
+            
             setQuestion('');
         } catch (error) {
             console.error('Error:', error);
@@ -50,7 +50,7 @@ const PostResponse: React.FC = () => {
                     </div>
                 </div>
                 <hr className='my-4 border-gray-300' />
-                <div className='bg-[#F1F5F9] rounded-lg p-4'>
+                <div className='bg-primary-custom-purple rounded-lg p-4'>
                     <div className='text-left'>
                         <h2 className='text-lg font-semibold'>Post Your Question</h2>
                         <textarea
@@ -61,7 +61,7 @@ const PostResponse: React.FC = () => {
                         <div className='flex justify-end mt-2'>
                             <button
                                 onClick={handleSubmit}
-                                className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md'
+                                className='bg-custom-purple hover:bg-primary-custom-purple border border-custom-purple text-white hover:text-custom-purple font-semibold py-2 px-4 rounded-md'
                             >
                                 Submit
                             </button>
@@ -69,10 +69,14 @@ const PostResponse: React.FC = () => {
                     </div>
                 </div>
                 {response && (
-                    <div className='mt-4 border border-blue-500 rounded-lg p-5 bg-[#F1F5F9]'>
+                    <div className='mt-4 border border-custom-purple rounded-lg p-5 bg-primary-custom-purple'>
                         <div className='p-4'>{response}</div>
-                        {/* Separate div for previous questions */}
-                        <div className='mt-4'>
+                        
+                    </div>
+                )}
+
+                {/* Separate div for previous questions */}
+                <div className='mt-4 p-5 bg-primary-custom-purple rounded-lg'>
                             <h3 className='text-lg font-semibold mb-2'>Previous Questions</h3>
                             {previousQuestions.map((prevQuestion, index) => (
                                 <div key={index} className='rounded-md border border-gray-300 my-2 bg-white p-2'>
@@ -80,8 +84,6 @@ const PostResponse: React.FC = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                )}
             </div>
             {/* Footer */}
             <div className="mt-auto border-t border-gray-300 bg-[#29363E] py-4 text-white">
