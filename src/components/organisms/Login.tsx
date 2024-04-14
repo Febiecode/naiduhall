@@ -1,8 +1,7 @@
 "use client"
 
 import React from 'react'
-import ProfileWithStatus from '../../../src/components/atoms/ProfileWithStatus';
-import NameRoleComponent from '../../../src/components/atoms/NameRole';
+import Link from 'next/link';
 
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -19,10 +18,7 @@ import {
     FormLabel,
     FormMessage,
 } from "../../components/ui/form"
-import {
-    AlertDialogCancel,
-    AlertDialogAction
-} from "../../components/ui/alert-dialog"
+
 import { Input } from "../../components/ui/input"
 import { Button } from "../../components/ui/button"
 import Image from 'next/image';
@@ -59,8 +55,12 @@ const Login = () => {
                     <div className=' w-full flex justify-between'>
                         <h1 className='text-xl font-bold items-center'>ERP Answers</h1>
                         <div className='flex items-center'>
-                            <Button className='bg-primary-custom-purple hover:bg-custom-purple border  text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Login</Button>
-                            <Button className='bg-primary-custom-purple hover:bg-custom-purple border border-custom-purple text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Register</Button>
+                            <Link href="/login">
+                                <Button className='bg-primary-custom-purple hover:bg-custom-purple border  text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Login</Button>
+                            </Link>
+                            <Link href="/register">
+                                <Button className='bg-primary-custom-purple hover:bg-custom-purple border border-custom-purple text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Register</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ const Login = () => {
                             <h1 className='text-[30px] font-semibold my-2'>Product Logo</h1>
 
                             <h1 className='font-semibold text-xl my-2'>Get Starter with Naiduhall</h1>
-                            <h1 className='text-gray-400 mb-5'>Welcome! Let's get started!</h1>
+                            <h1 className='text-gray-400 mb-5 text-sm'>Welcome! Let's get started!</h1>
                         </div>
                         <Form {...form}>
                             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -99,7 +99,7 @@ const Login = () => {
                                     render={({ field }) => (
                                         <FormItem >
                                             <FormControl>
-                                                <Input className='bg-white p-5' placeholder="Password" {...field} />
+                                                <Input className='bg-white p-5' placeholder="Password" type='password' {...field} />
                                             </FormControl>
                                             {/* <FormDescription>
                                 This is your public display name.
