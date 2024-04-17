@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../molecules/navbar/NavBar'
 import Sidebar from "@/components/molecules/sidebar/SideBarcomponents";
+import MachineMasterTable from "../molecules/table/MachineMasterTable"
 
 const MachineMaster = () => {
   return (
@@ -11,6 +12,7 @@ const MachineMaster = () => {
         </div>
         <div className="customMain">
           <NavBar />
+          <MachineMasterTable />
         </div>
       </div>
     </>
