@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import MasterAddForm from "../form/MasterAddForm"
-import MasterEditForm from "../form/MasterEditForm"
+import MachineAddForm from "../form/MachineAddForm"
+import MachineEditForm from "../form/MachineEditForm"
 
 import {
     AlertDialog,
@@ -200,7 +200,7 @@ export const columns: ColumnDef<MasterTable>[] = [
                                 <AlertDialogHeader>
                                     <AlertDialogTitle>Edit Machine</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        <MasterEditForm />
+                                        <MachineEditForm />
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                             </AlertDialogContent>
@@ -274,7 +274,7 @@ const MasterTable = () => {
                                 <AlertDialogHeader>
                                     <AlertDialogTitle>Add Machine</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        <MasterAddForm />
+                                        <MachineAddForm />
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                             </AlertDialogContent>

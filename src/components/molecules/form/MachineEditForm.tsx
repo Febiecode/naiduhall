@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { Button } from "../../../components/ui/button"
+import { Button } from "../../ui/button"
 import {
     Form,
     FormControl,
@@ -13,12 +13,12 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from "../../../components/ui/form"
+} from "../../ui/form"
 import {
     AlertDialogCancel,
     AlertDialogAction
-} from "../../../components/ui/alert-dialog"
-import { Input } from "../../../components/ui/input"
+} from "../../ui/alert-dialog"
+import { Input } from "../../ui/input"
 
 const formSchema = z.object({
     MachineName: z.string().min(2, {
@@ -26,7 +26,7 @@ const formSchema = z.object({
     }),
 })
 
-const ProfileForm = () => {
+const MasterEditForm = () => {
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -71,4 +71,4 @@ const ProfileForm = () => {
     )
 }
 
-export default ProfileForm;
+export default MasterEditForm;
