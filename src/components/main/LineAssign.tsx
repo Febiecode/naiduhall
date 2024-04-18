@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../molecules/navbar/NavBar'
 import Sidebar from "@/components/molecules/sidebar/SideBarcomponents";
+import LineAssignTable from '../molecules/table/LineAssignTable';
 
 const LineAssign = () => {
   return (
@@ -10,6 +11,7 @@ const LineAssign = () => {
         </div>
         <div className="customMain">
           <NavBar />
+          <LineAssignTable />
         </div>
       </div>
   )
