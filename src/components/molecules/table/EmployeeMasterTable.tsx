@@ -2,8 +2,8 @@
 
 import * as React from "react"
 
-import MasterAddForm from "../form/MasterAddForm"
-import MasterEditForm from "../form/MasterEditForm"
+import EmployeeAddForm from "../form/EmployeeAddForm"
+import EmployeeEditForm from "../form/EmployeeEditForm"
 
 import {
     AlertDialog,
@@ -58,53 +58,53 @@ import {
 } from "../../ui/table"
 import { Badge } from "../../ui/badge"
 
-const data: MasterTable[] = [
+const data: EmploeeEmployeeTable[] = [
     {
         "id": 1,
-        "MachineName": "Website Redesign",
-        "MachineCode": "M001",
+        "EmployeeName": "Website Redesign",
+        "EmployeeCode": "M001",
         "modifiedDate": "2024-04-11T13:34:06.76",
         "modifiedBy": "Test User"
     },
     {
         "id": 2,
-        "MachineName": "Marketing Campaign",
-        "MachineCode": "M001",
+        "EmployeeName": "Marketing Campaign",
+        "EmployeeCode": "M001",
         "modifiedDate": "2024-04-11T09:21:45.32",
         "modifiedBy": "MarketingTeam"
     },
     {
         "id": 3,
-        "MachineName": "Product Launch",
-        "MachineCode": "M001",
+        "EmployeeName": "Product Launch",
+        "EmployeeCode": "M001",
         "modifiedDate": "2024-04-11T16:58:22.09",
         "modifiedBy": "ProductManager"
     },
     {
         "id": 4,
-        "MachineName": "Customer Survey",
-        "MachineCode": "M001",
+        "EmployeeName": "Customer Survey",
+        "EmployeeCode": "M001",
         "modifiedDate": "2024-04-11T11:47:33.78",
         "modifiedBy": "CustomerService"
     },
     {
         "id": 5,
-        "MachineName": "Inventory Management System",
-        "MachineCode": "M001",
+        "EmployeeName": "Inventory Management System",
+        "EmployeeCode": "M001",
         "modifiedDate": "2024-04-11T14:05:12.15",
         "modifiedBy": "InventoryTeam"
     },
 ]
 
-export type MasterTable = {
+export type EmploeeEmployeeTable = {
     id: number
-    MachineName: string
-    MachineCode: string
+    EmployeeName: string
+    EmployeeCode: string
     modifiedDate: string
     modifiedBy: string
 }
 
-export const columns: ColumnDef<MasterTable>[] = [
+export const columns: ColumnDef<EmploeeEmployeeTable>[] = [
     // {
     //     id: "select",
     //     header: ({ table }) => (
@@ -128,26 +128,26 @@ export const columns: ColumnDef<MasterTable>[] = [
     //     enableHiding: false,
     // },
     {
-        accessorKey: "MachineName",
-        header: "Machine Name",
+        accessorKey: "EmployeeName",
+        header: "Employee Name",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("MachineName")}</div>
+            <div className="capitalize">{row.getValue("EmployeeName")}</div>
         ),
     },
     {
-        accessorKey: "MachineCode",
+        accessorKey: "EmployeeCode",
         header: ({ column }) => {
             return (
                 <Button
                     variant="ghost" className="ps-0 ms-0"
                     onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
                 >
-                    Machine Code
+                    Employee Code
                     <CaretSortIcon className="ml-2 h-4 w-4" />
                 </Button>
             )
         },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("MachineCode")}</div>,
+        cell: ({ row }) => <div className="lowercase">{row.getValue("EmployeeCode")}</div>,
     },
     {
         accessorKey: "modifiedDate",
@@ -198,9 +198,9 @@ export const columns: ColumnDef<MasterTable>[] = [
                             </AlertDialogTrigger>
                             <AlertDialogContent>
                                 <AlertDialogHeader>
-                                    <AlertDialogTitle>Edit Machine</AlertDialogTitle>
+                                    <AlertDialogTitle>Edit Employee</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        <MasterEditForm />
+                                        <EmployeeEditForm />
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                             </AlertDialogContent>
@@ -226,7 +226,7 @@ export const columns: ColumnDef<MasterTable>[] = [
 ]
 
 
-const MasterTable = () => {
+const EmploeeEmployeeTable = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -266,15 +266,15 @@ const MasterTable = () => {
         <>
             <div className=" mt-20 w-[80%]">
                 <div className="flex justify-between">
-                    <h1 className="text-lg font-semibold pe-5">Machine Master</h1>
+                    <h1 className="text-lg font-semibold pe-5">Employee</h1>
                     <Badge variant="destructive">
                         <AlertDialog>
-                            <AlertDialogTrigger>Add Machine</AlertDialogTrigger>
+                            <AlertDialogTrigger>Add Employee</AlertDialogTrigger>
                             <AlertDialogContent>
                                 <AlertDialogHeader>
-                                    <AlertDialogTitle>Add Machine</AlertDialogTitle>
+                                    <AlertDialogTitle>Add Employee</AlertDialogTitle>
                                     <AlertDialogDescription>
-                                        <MasterAddForm />
+                                        <EmployeeAddForm />
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                             </AlertDialogContent>
@@ -285,7 +285,7 @@ const MasterTable = () => {
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter Machine Name, Machine Code..."
+                        placeholder="Filter Employee Name, Employee Code..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -417,4 +417,4 @@ const MasterTable = () => {
     )
 }
 
-export default MasterTable
+export default EmploeeEmployeeTable

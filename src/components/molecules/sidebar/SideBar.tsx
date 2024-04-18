@@ -58,6 +58,11 @@ const items: ISidebarItem[] = [
     icon: Bolt,
   },
   {
+    name: "Employee Master",
+    path: "/employeeMaster",
+    icon: Bolt,
+  },
+  {
     name: "Line Assign",
     path: "/lineAssign",
     icon: Settings2Icon,
