@@ -72,6 +72,11 @@ const items: ISidebarItem[] = [
     path: "/styleMaster",
     icon: FileCog,
   },
+  {
+    name: "SAM Master",
+    path: "/samMaster",
+    icon: Cog,
+  },
   // {
   //   name: "Machine",
   //   path: "/settings",
