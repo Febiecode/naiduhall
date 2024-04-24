@@ -22,21 +22,21 @@ import { Input } from "../../../components/ui/input"
 
 const formSchema = z.object({
     id: z.string(),
-    employeeName: z.string().min(1, {
-        message: "Enter a valid Employee Name",
+    styleNumber: z.string().min(1, {
+        message: "Enter a valid Style Number",
     }),
-    employeeCode: z.string().min(1, {
-        message: "Enter a valid Employee Code",
+    styleName: z.string().min(1, {
+        message: "Enter a valid Style Name",
     }),
 })
 
 interface FormEdit {
     id: string,
-    employeeName: string,
-    employeeCode: string
+    styleName: string,
+    styleNumber: string
 }
 
-const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName: FormEdit, rowid: FormEdit, employeeCode: FormEdit }) => {
+const StyleEditForm = ({ styleName, rowid, styleNumber }: { styleName: FormEdit, rowid: FormEdit, styleNumber: FormEdit }) => {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -62,8 +62,8 @@ const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName:
         resolver: zodResolver(formSchema),
         defaultValues: {
             id: rowid.toString(),
-            employeeName: employeeName.toString(),
-            employeeCode: employeeCode.toString()
+            styleName: styleName.toString(),
+            styleNumber: styleNumber.toString()
         },
     })
 
@@ -71,8 +71,7 @@ const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName:
         try {
             console.log(values)
             // Make a POST request to the API endpoint with the form values
-            const response = await api.post("Master/SaveEmployeeMas", values);
-            console.log(values)
+            const response = await api.post("Master/SaveStyleMas", values);
             // Handle success response
             console.log("Form submitted successfully:", response.data);
             setIsSuccess(true);
@@ -104,12 +103,12 @@ const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName:
                 />
                 <FormField
                     control={form.control}
-                    name="employeeName"
+                    name="styleName"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Employee Name</FormLabel>
+                            <FormLabel>Style Name</FormLabel>
                             <FormControl>
-                                <Input placeholder={`${employeeName}`} {...field} />
+                                <Input placeholder={`${styleName}`} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -117,12 +116,12 @@ const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName:
                 />
                 <FormField
                     control={form.control}
-                    name="employeeCode"
+                    name="styleNumber"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Employee Code</FormLabel>
+                            <FormLabel>Style Number</FormLabel>
                             <FormControl>
-                                <Input placeholder={`${employeeCode}`} {...field} />
+                                <Input placeholder={`${styleNumber}`} {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -152,4 +151,4 @@ const EmployeeEditForm = ({ employeeName, rowid, employeeCode }: { employeeName:
     )
 }
 
-export default EmployeeEditForm;
+export default StyleEditForm;

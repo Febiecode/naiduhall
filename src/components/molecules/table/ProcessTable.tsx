@@ -1,21 +1,12 @@
 "use client"
 
-import * as React from "react"
+import React, {useState, useEffect, ChangeEvent} from "react";
 
 import ProcessAddForm from "../form/ProcessAddForm"
 import ProcessEditForm from "../form/ProcessEditForm"
 
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "../../../components/ui/alert-dialog"
+import api from '../../../services/api'
+
 
 
 import {
@@ -56,112 +47,42 @@ import {
     TableHeader,
     TableRow,
 } from "../../ui/table"
-import { Badge } from "../../ui/badge"
 
-const data: RecentProject[] = [
-    {
-        "id": 1,
-        "projectName": "Website Redesign",
-        "modifiedDate": "2024-04-11T13:34:06.76",
-        "modifiedBy": "Test User"
-    },
-    {
-        "id": 2,
-        "projectName": "Marketing Campaign",
-        "modifiedDate": "2024-04-11T09:21:45.32",
-        "modifiedBy": "MarketingTeam"
-    },
-    {
-        "id": 3,
-        "projectName": "Product Launch",
-        "modifiedDate": "2024-04-11T16:58:22.09",
-        "modifiedBy": "ProductManager"
-    },
-    {
-        "id": 4,
-        "projectName": "Customer Survey",
-        "modifiedDate": "2024-04-11T11:47:33.78",
-        "modifiedBy": "CustomerService"
-    },
-    {
-        "id": 5,
-        "projectName": "Inventory Management System",
-        "modifiedDate": "2024-04-11T14:05:12.15",
-        "modifiedBy": "InventoryTeam"
-    },
-    {
-        "id": 6,
-        "projectName": "Employee Training Program",
-        "modifiedDate": "2024-04-11T10:30:59.41",
-        "modifiedBy": "HRManager"
-    },
-    {
-        "id": 7,
-        "projectName": "Social Media Strategy",
-        "modifiedDate": "2024-04-11T15:40:27.68",
-        "modifiedBy": "SocialMediaTeam"
-    },
-    {
-        "id": 8,
-        "projectName": "Financial Report",
-        "modifiedDate": "2024-04-11T12:15:18.92",
-        "modifiedBy": "FinanceDepartment"
-    },
-    {
-        "id": 9,
-        "projectName": "Event Planning",
-        "modifiedDate": "2024-04-11T17:20:36.55",
-        "modifiedBy": "EventCoordinator"
-    },
-    {
-        "id": 10,
-        "projectName": "Customer Support Enhancement",
-        "modifiedDate": "2024-04-11T13:55:47.03",
-        "modifiedBy": "SupportTeam"
-    },
-    {
-        "id": 11,
-        "projectName": "Quality Assurance Audit",
-        "modifiedDate": "2024-04-11T08:45:29.84",
-        "modifiedBy": "QAManager"
-    }
-]
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose
+} from "../../../components/ui/dialog"
+import { Badge } from "../../ui/badge"
 
 export type RecentProject = {
     id: number
-    projectName: string
+    processName: string
     modifiedDate: string
     modifiedBy: string
 }
 
 export const columns: ColumnDef<RecentProject>[] = [
-    // {
-    //     id: "select",
-    //     header: ({ table }) => (
-    //         <Checkbox
-    //             checked={
-    //                 table.getIsAllPageRowsSelected() ||
-    //                 (table.getIsSomePageRowsSelected() && "indeterminate")
-    //             }
-    //             onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-    //             aria-label="Select all"
-    //         />
-    //     ),
-    //     cell: ({ row }) => (
-    //         <Checkbox
-    //             checked={row.getIsSelected()}
-    //             onCheckedChange={(value) => row.toggleSelected(!!value)}
-    //             aria-label="Select row"
-    //         />
-    //     ),
-    //     enableSorting: false,
-    //     enableHiding: false,
-    // },
+
     {
-        accessorKey: "projectName",
-        header: "Project Name",
+
+        accessorKey: "id",
+        header: "ID",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("projectName")}</div>
+            <div className="capitalize">{row.getValue("id")}</div>
+        ),
+    },
+    
+    {
+        accessorKey: "processName",
+        header: "Process Name",
+        cell: ({ row }) => (
+            <div className="capitalize">{row.getValue("processName")}</div>
         ),
     },
     {
@@ -198,41 +119,27 @@ export const columns: ColumnDef<RecentProject>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }) => {
-            const payment = row.original
-
+            console.log(row.getValue(""))
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        {/* <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
+                         <Dialog>
+                            <DialogTrigger asChild>
                             <Pencil2Icon className="h-4 w-4" />
-                        </Button> */}
-                        <AlertDialog>
-                            <AlertDialogTrigger>
-                                <Pencil2Icon className="h-4 w-4" />
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <AlertDialogTitle>Edit Process</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <ProcessEditForm />
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                            </AlertDialogContent>
-                        </AlertDialog>
-
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-md">
+                                <DialogHeader>
+                                    <DialogTitle>Edit Process</DialogTitle>
+                                    <DialogDescription>
+                                        <ProcessEditForm rowid={row.getValue("id")} processName={row.getValue("processName")} />
+                                    </DialogDescription>
+                                </DialogHeader>
+                                {/* <DialogFooter className="sm:justify-start">
+                                    
+                                </DialogFooter> */}
+                            </DialogContent>
+                        </Dialog>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.toString())}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
-                    </DropdownMenuContent>
                 </DropdownMenu>
             )
         },
@@ -241,14 +148,30 @@ export const columns: ColumnDef<RecentProject>[] = [
 ]
 
 
-const ProcessTable = () => {
+const ProcessTable: React.FC = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
+    const [data, setData] = React.useState<RecentProject[]>([]);
+
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
+
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get('/Master/GetProcessMas');
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const table = useReactTable({
         data,
@@ -277,24 +200,32 @@ const ProcessTable = () => {
             value.toString().toLowerCase().includes(filter.toLowerCase())
         );
     });
+
+
+
     return (
         <>
             <div className=" mt-20 w-[80%]">
                 <div className="flex justify-between">
                     <h1 className="text-lg font-semibold pe-5">Process Master</h1>
                     <Badge variant="destructive">
-                        <AlertDialog>
-                            <AlertDialogTrigger>Add Data</AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <AlertDialogTitle>Add Process</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <ProcessAddForm />
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                            </AlertDialogContent>
-                        </AlertDialog>
 
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <button>Add Process</button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-md">
+                                <DialogHeader>
+                                    <DialogTitle>Add Process</DialogTitle>
+                                    <DialogDescription>
+                                        <ProcessAddForm />
+                                    </DialogDescription>
+                                </DialogHeader>
+                                {/* <DialogFooter className="sm:justify-start">
+                                    
+                                </DialogFooter> */}
+                            </DialogContent>
+                        </Dialog>
                     </Badge>
                 </div>
                 <div className="flex items-center py-4">
@@ -333,31 +264,7 @@ const ProcessTable = () => {
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    {/* <div className="px-3">
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant={"outline"}
-                                className={cn(
-                                    "w-[240px] justify-start text-left font-normal",
-                                    !date && "text-muted-foreground"
-                                )}           
-                            >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : <span>Select Due Date</span>}
-                                
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                                initialFocus
-                            />
-                        </PopoverContent>
-                    </Popover>
-                </div> */}
+
                 </div>
                 <div className="rounded-md border">
                     <Table>

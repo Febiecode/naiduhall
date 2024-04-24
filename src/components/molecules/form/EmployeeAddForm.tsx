@@ -1,9 +1,10 @@
 "use client"
 
+import { useState, useEffect } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
+import api from '../../../services/api'
 import { Button } from "../../../components/ui/button"
 import {
     Form,
@@ -14,77 +15,115 @@ import {
     FormLabel,
     FormMessage,
 } from "../../../components/ui/form"
-import {
-    AlertDialogCancel,
-    AlertDialogAction
-} from "../../../components/ui/alert-dialog"
+
+
 import { Input } from "../../../components/ui/input"
 
+import { Alert, AlertDescription, AlertTitle } from "../../../components/ui/alert"
+
+
 const formSchema = z.object({
-    EmployeeName: z.string().min(2, {
-        message: "Username must be at least 2 characters.",
+    employeeName: z.string().min(1, {
+        message: "Enter a valid Employee Name",
     }),
-    EmployeeCode: z.string().min(2, {
-        message: "Username must be at least 2 characters.",
+    employeeCode: z.string().min(1, {
+        message: "Enter a valid Employee Code",
     }),
 })
 
 const EmployeeAddForm = () => {
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+    useEffect(() => {
+        // Set timeout to hide success alert after 3 seconds
+        if (isSuccess) {
+            const successTimer = setTimeout(() => {
+                setIsSuccess(false);
+            }, 3000); // 3 seconds
+            return () => clearTimeout(successTimer);
+        }
+
+        // Set timeout to hide error alert after 3 seconds
+        if (isError) {
+            const errorTimer = setTimeout(() => {
+                setIsError(false);
+            }, 3000); // 3 seconds
+            return () => clearTimeout(errorTimer);
+        }
+    }, [isSuccess, isError]);
     // 1. Define your form.
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            EmployeeName: "",
-            EmployeeCode: "",
+            employeeName: "",
+            employeeCode: ""
         },
     })
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        try {
+            // Make a POST request to the API endpoint with the form values
+            const response = await api.post("Master/SaveEmployeeMas", values);
+
+            // Handle success response
+            console.log("Form submitted successfully:", response.data);
+            setIsSuccess(true);
+            // Optionally, you can show a success message or redirect the user
+        } catch (error) {
+            // Handle error response
+            console.error("Error submitting form:", error);
+            setIsError(true);
+            // Optionally, you can show an error message to the user
+        }
     }
 
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField 
+                <FormField
                     control={form.control}
-                    name="EmployeeName"
+                    name="employeeName"
                     render={({ field }) => (
-                        <FormItem >
-                            <FormLabel className="flex justify-start">Employee Name</FormLabel>
+                        <FormItem>
+                            <FormLabel>Employee Name</FormLabel>
                             <FormControl>
                                 <Input placeholder="" {...field} />
                             </FormControl>
-                            {/* <FormDescription>
-                                This is your public display name.
-                            </FormDescription> */}
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <FormField 
+                <FormField
                     control={form.control}
-                    name="EmployeeCode"
+                    name="employeeCode"
                     render={({ field }) => (
-                        <FormItem >
-                            <FormLabel className="flex justify-start">Employee Code</FormLabel>
+                        <FormItem>
+                            <FormLabel>Employee Code</FormLabel>
                             <FormControl>
                                 <Input placeholder="" {...field} />
                             </FormControl>
-                            {/* <FormDescription>
-                                This is your public display name.
-                            </FormDescription> */}
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <div className="flex justify-center items-center gap-4">
-                    {/* <Button type="submit">Submit</Button> */}
-                    <AlertDialogAction type="submit">Submit</AlertDialogAction>
-                    <AlertDialogCancel className="xxsm:mb-2 lg:mb-0 md:mb-0">Cancel</AlertDialogCancel>
+                <div className="flex text-left">
+                    {isSuccess && (
+                        <Alert variant="success">
+                            <AlertTitle>Success</AlertTitle>
+                            <AlertDescription>Form submitted successfully</AlertDescription>
+                        </Alert>
+                    )}
+                    {isError && (
+                        <Alert variant="destructive">
+                            <AlertTitle>Error</AlertTitle>
+                            <AlertDescription>Failed to submit form. Please try again later.</AlertDescription>
+                        </Alert>
+                    )}
+                </div>
+                <div className="flex">
+                    <Button type="submit" variant="secondary">Add</Button>
                 </div>
             </form>
         </Form>

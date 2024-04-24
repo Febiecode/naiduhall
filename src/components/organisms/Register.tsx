@@ -57,21 +57,6 @@ const Register = () => {
     return (
         <div className='min-h-screen flex flex-col'>
             <div className='container-fluid  mt-5 px-3'>
-                <div className='flex justify-between'>
-                    <div className=' w-full flex justify-between'>
-                        <h1 className='text-xl font-bold items-center'>ERP Answers</h1>
-                        <div className='flex items-center'>
-                            <Link href="/login">
-                                <Button className='bg-primary-custom-purple hover:bg-custom-purple border  text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Login</Button>
-                            </Link>
-                            <Link href="/register">
-                                <Button className='bg-primary-custom-purple hover:bg-custom-purple border border-custom-purple text-custom-purple hover:text-white font-semibold py-2 px-4 rounded-md mx-2'>Register</Button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <hr className='my-4 border-gray-300' />
-
                 <div className="w-full flex flex-col items-center mt-20">
                     <div className=' xl:w-[30%] lg:w-[40%] sm:w-[95%] xxsm:w-[95%] flex flex-col justify-center bg-primary-custom-purple p-5 rounded-lg'>
                         <div className='flex flex-col items-center'>
@@ -134,21 +119,12 @@ const Register = () => {
                                 </div>
                             </form>
                         </Form>
-                    </div>
-                </div>
-
-            </div>
-            {/* Footer */}
-            <div className="mt-auto border-t border-gray-300 bg-[#29363E] py-4 text-white">
-                <div className="container mx-auto">
-                    <div className="flex justify-between xxsm:flex-col lg:flex-row">
-                        <h1><span className='font-semibold'>RapidSoft Solutions</span> @ 2024. All rights reserved</h1>
-                        <div className="flex justify-between lg:mt-0 xxsm:mt-10">
-                            <span className='px-2'>Terms</span>
-                            <span className='px-2'>Privacy</span>
+                        <div className='pt-5 flex w-full justify-center'>
+                            <a href="/login">Aleardy a User? <span className='text-custom-purple '>Sign In</span></a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     );

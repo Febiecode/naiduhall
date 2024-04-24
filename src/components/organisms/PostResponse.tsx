@@ -23,9 +23,9 @@ const PostResponse: React.FC = () => {
             const responseData = await response.json();
             // Simulate a response based on the user's question
             setResponse(responseData.title);
-          
+
             // setPreviousQuestions(prevQuestions => [...prevQuestions, question]);
-            
+
             setQuestion('');
         } catch (error) {
             console.error('Error:', error);
@@ -71,19 +71,19 @@ const PostResponse: React.FC = () => {
                 {response && (
                     <div className='mt-4 border border-custom-purple rounded-lg p-5 bg-primary-custom-purple'>
                         <div className='p-4'>{response}</div>
-                        
+
                     </div>
                 )}
 
                 {/* Separate div for previous questions */}
                 <div className='mt-4 p-5 bg-primary-custom-purple rounded-lg'>
-                            <h3 className='text-lg font-semibold mb-2'>Previous Questions</h3>
-                            {previousQuestions.map((prevQuestion, index) => (
-                                <div key={index} className='rounded-md border border-gray-300 my-2 bg-white p-2'>
-                                    {prevQuestion}
-                                </div>
-                            ))}
+                    <h3 className='text-lg font-semibold mb-2'>Previous Questions</h3>
+                    {previousQuestions.map((prevQuestion, index) => (
+                        <div key={index} className='rounded-md border border-gray-300 my-2 bg-white p-2'>
+                            {prevQuestion}
                         </div>
+                    ))}
+                </div>
             </div>
             {/* Footer */}
             <div className="mt-auto border-t border-gray-300 bg-[#29363E] py-4 text-white">

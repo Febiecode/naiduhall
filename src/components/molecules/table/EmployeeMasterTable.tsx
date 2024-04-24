@@ -1,21 +1,12 @@
 "use client"
 
-import * as React from "react"
+import React, {useState, useEffect, ChangeEvent} from "react";
 
-import EmployeeAddForm from "../form/EmployeeAddForm"
-import EmployeeEditForm from "../form/EmployeeEditForm"
+import EmployeeAddForm from "../form/EmployeeAddForm";
+import EmployeeEditForm from "../form/EmployeeEditForm";
 
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "../../ui/alert-dialog"
+import api from '../../../services/api'
+
 
 
 import {
@@ -56,98 +47,51 @@ import {
     TableHeader,
     TableRow,
 } from "../../ui/table"
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+    DialogFooter,
+    DialogClose
+} from "../../../components/ui/dialog"
 import { Badge } from "../../ui/badge"
 
-const data: EmploeeEmployeeTable[] = [
-    {
-        "id": 1,
-        "EmployeeName": "Website Redesign",
-        "EmployeeCode": "M001",
-        "modifiedDate": "2024-04-11T13:34:06.76",
-        "modifiedBy": "Test User"
-    },
-    {
-        "id": 2,
-        "EmployeeName": "Marketing Campaign",
-        "EmployeeCode": "M001",
-        "modifiedDate": "2024-04-11T09:21:45.32",
-        "modifiedBy": "MarketingTeam"
-    },
-    {
-        "id": 3,
-        "EmployeeName": "Product Launch",
-        "EmployeeCode": "M001",
-        "modifiedDate": "2024-04-11T16:58:22.09",
-        "modifiedBy": "ProductManager"
-    },
-    {
-        "id": 4,
-        "EmployeeName": "Customer Survey",
-        "EmployeeCode": "M001",
-        "modifiedDate": "2024-04-11T11:47:33.78",
-        "modifiedBy": "CustomerService"
-    },
-    {
-        "id": 5,
-        "EmployeeName": "Inventory Management System",
-        "EmployeeCode": "M001",
-        "modifiedDate": "2024-04-11T14:05:12.15",
-        "modifiedBy": "InventoryTeam"
-    },
-]
-
-export type EmploeeEmployeeTable = {
+export type EmployeeMaster = {
     id: number
-    EmployeeName: string
-    EmployeeCode: string
+    employeeName: string
+    employeeCode: string
     modifiedDate: string
     modifiedBy: string
 }
 
-export const columns: ColumnDef<EmploeeEmployeeTable>[] = [
-    // {
-    //     id: "select",
-    //     header: ({ table }) => (
-    //         <Checkbox
-    //             checked={
-    //                 table.getIsAllPageRowsSelected() ||
-    //                 (table.getIsSomePageRowsSelected() && "indeterminate")
-    //             }
-    //             onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-    //             aria-label="Select all"
-    //         />
-    //     ),
-    //     cell: ({ row }) => (
-    //         <Checkbox
-    //             checked={row.getIsSelected()}
-    //             onCheckedChange={(value) => row.toggleSelected(!!value)}
-    //             aria-label="Select row"
-    //         />
-    //     ),
-    //     enableSorting: false,
-    //     enableHiding: false,
-    // },
+export const columns: ColumnDef<EmployeeMaster>[] = [
+
     {
-        accessorKey: "EmployeeName",
-        header: "Employee Name",
+
+        accessorKey: "id",
+        header: "ID",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("EmployeeName")}</div>
+            <div className="capitalize">{row.getValue("id")}</div>
+        ),
+    },
+    
+    {
+        accessorKey: "employeeName",
+        header: "employee Name",
+        cell: ({ row }) => (
+            <div className="capitalize">{row.getValue("employeeName")}</div>
         ),
     },
     {
-        accessorKey: "EmployeeCode",
-        header: ({ column }) => {
-            return (
-                <Button
-                    variant="ghost" className="ps-0 ms-0"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Employee Code
-                    <CaretSortIcon className="ml-2 h-4 w-4" />
-                </Button>
-            )
-        },
-        cell: ({ row }) => <div className="lowercase">{row.getValue("EmployeeCode")}</div>,
+        accessorKey: "employeeCode",
+        header: "employee Code",
+        cell: ({ row }) => (
+            <div className="capitalize">{row.getValue("employeeCode")}</div>
+        ),
     },
     {
         accessorKey: "modifiedDate",
@@ -183,41 +127,27 @@ export const columns: ColumnDef<EmploeeEmployeeTable>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }) => {
-            const payment = row.original
-
+            console.log(row.getValue(""))
             return (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        {/* <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
+                         <Dialog>
+                            <DialogTrigger asChild>
                             <Pencil2Icon className="h-4 w-4" />
-                        </Button> */}
-                        <AlertDialog>
-                            <AlertDialogTrigger>
-                                <Pencil2Icon className="h-4 w-4" />
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <AlertDialogTitle>Edit Employee</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <EmployeeEditForm />
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                            </AlertDialogContent>
-                        </AlertDialog>
-
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-md">
+                                <DialogHeader>
+                                    <DialogTitle>Edit employee</DialogTitle>
+                                    <DialogDescription>
+                                        <EmployeeEditForm rowid={row.getValue("id")} employeeName={row.getValue("employeeName")} employeeCode={row.getValue("employeeCode")}/>
+                                    </DialogDescription>
+                                </DialogHeader>
+                                {/* <DialogFooter className="sm:justify-start">
+                                    
+                                </DialogFooter> */}
+                            </DialogContent>
+                        </Dialog>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.toString())}
-                        >
-                            Copy payment ID
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuItem>View payment details</DropdownMenuItem>
-                    </DropdownMenuContent>
                 </DropdownMenu>
             )
         },
@@ -226,14 +156,30 @@ export const columns: ColumnDef<EmploeeEmployeeTable>[] = [
 ]
 
 
-const EmploeeEmployeeTable = () => {
+const EmployeeMasterTable: React.FC = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
+    const [data, setData] = React.useState<EmployeeMaster[]>([]);
+
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
+
+
+    React.useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await api.get('/Master/GetemployeeMas');
+                setData(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const table = useReactTable({
         data,
@@ -262,30 +208,38 @@ const EmploeeEmployeeTable = () => {
             value.toString().toLowerCase().includes(filter.toLowerCase())
         );
     });
+
+
+
     return (
         <>
             <div className=" mt-20 w-[80%]">
                 <div className="flex justify-between">
-                    <h1 className="text-lg font-semibold pe-5">Employee</h1>
+                    <h1 className="text-lg font-semibold pe-5">Employee Master</h1>
                     <Badge variant="destructive">
-                        <AlertDialog>
-                            <AlertDialogTrigger>Add Employee</AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <AlertDialogHeader>
-                                    <AlertDialogTitle>Add Employee</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <EmployeeAddForm />
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                            </AlertDialogContent>
-                        </AlertDialog>
 
+                        <Dialog>
+                            <DialogTrigger asChild>
+                                <button>Add Employee</button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-md">
+                                <DialogHeader>
+                                    <DialogTitle>Add Employee</DialogTitle>
+                                    <DialogDescription>
+                                        <EmployeeAddForm />
+                                    </DialogDescription>
+                                </DialogHeader>
+                                {/* <DialogFooter className="sm:justify-start">
+                                    
+                                </DialogFooter> */}
+                            </DialogContent>
+                        </Dialog>
                     </Badge>
                 </div>
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter Employee Name, Employee Code..."
+                        placeholder="Filter project, ModifiedDate, ModifiedBy ..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -318,31 +272,7 @@ const EmploeeEmployeeTable = () => {
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    {/* <div className="px-3">
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant={"outline"}
-                                className={cn(
-                                    "w-[240px] justify-start text-left font-normal",
-                                    !date && "text-muted-foreground"
-                                )}           
-                            >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date ? format(date, "PPP") : <span>Select Due Date</span>}
-                                
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                            <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={setDate}
-                                initialFocus
-                            />
-                        </PopoverContent>
-                    </Popover>
-                </div> */}
+
                 </div>
                 <div className="rounded-md border">
                     <Table>
@@ -417,4 +347,4 @@ const EmploeeEmployeeTable = () => {
     )
 }
 
-export default EmploeeEmployeeTable
+export default EmployeeMasterTable

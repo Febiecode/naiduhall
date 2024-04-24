@@ -1,9 +1,11 @@
+"use client"
 import React from 'react'
 import NavBar from '../molecules/navbar/NavBar'
 import Sidebar from "@/components/molecules/sidebar/SideBarcomponents";
-import LineAssignTable from '../molecules/table/LineAssignTable';
+import LineMasterTable from '../molecules/table/LineMasterTable';
+import { withAuth } from '../../utils/auth';
 
-const LineAssign = () => {
+const LineMaster = () => {
   return (
     <div className="layout">
         <div className="sidebar">
@@ -11,10 +13,10 @@ const LineAssign = () => {
         </div>
         <div className="customMain">
           <NavBar />
-          <LineAssignTable />
+          <LineMasterTable />
         </div>
       </div>
   )
 }
 
-export default LineAssign
+export default withAuth(LineMaster) 

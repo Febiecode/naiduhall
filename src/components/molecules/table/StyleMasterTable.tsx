@@ -2,8 +2,8 @@
 
 import React, {useState, useEffect, ChangeEvent} from "react";
 
-import MachineAddForm from "../form/MachineAddForm"
-import MachineEditForm from "../form/MachineEditForm"
+import StyleAddForm from "../form/StyleAddForm"
+import StyleEditForm from "../form/StyleEditForm"
 
 import api from '../../../services/api'
 
@@ -60,15 +60,15 @@ import {
 } from "../../../components/ui/dialog"
 import { Badge } from "../../ui/badge"
 
-export type RecentProject = {
+export type StyleMaster = {
     id: number
-    machineName: string
-    machineCode: string
+    styleName: string
+    styleNumber: string
     modifiedDate: string
     modifiedBy: string
 }
 
-export const columns: ColumnDef<RecentProject>[] = [
+export const columns: ColumnDef<StyleMaster>[] = [
 
     {
 
@@ -80,17 +80,17 @@ export const columns: ColumnDef<RecentProject>[] = [
     },
     
     {
-        accessorKey: "machineName",
-        header: "Machine Name",
+        accessorKey: "styleName",
+        header: "Style Name",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("machineName")}</div>
+            <div className="capitalize">{row.getValue("styleName")}</div>
         ),
     },
     {
-        accessorKey: "machineCode",
-        header: "Machine Code",
+        accessorKey: "styleNumber",
+        header: "Style Number",
         cell: ({ row }) => (
-            <div className="capitalize">{row.getValue("machineCode")}</div>
+            <div className="capitalize">{row.getValue("styleNumber")}</div>
         ),
     },
     {
@@ -137,9 +137,9 @@ export const columns: ColumnDef<RecentProject>[] = [
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-md">
                                 <DialogHeader>
-                                    <DialogTitle>Edit Machine</DialogTitle>
+                                    <DialogTitle>Edit Style</DialogTitle>
                                     <DialogDescription>
-                                        <MachineEditForm rowid={row.getValue("id")} machineName={row.getValue("machineName")} machineCode={row.getValue("machineCode")} />
+                                        <StyleEditForm rowid={row.getValue("id")} styleName={row.getValue("styleName")} styleNumber={row.getValue("styleNumber")} />
                                     </DialogDescription>
                                 </DialogHeader>
                                 {/* <DialogFooter className="sm:justify-start">
@@ -156,10 +156,10 @@ export const columns: ColumnDef<RecentProject>[] = [
 ]
 
 
-const MachineTable: React.FC = () => {
+const StyleMasterTable: React.FC = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
-    const [data, setData] = React.useState<RecentProject[]>([]);
+    const [data, setData] = React.useState<StyleMaster[]>([]);
 
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -171,7 +171,7 @@ const MachineTable: React.FC = () => {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('/Master/GetMachineMas');
+                const response = await api.get('/Master/GetStyleMas');
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -215,18 +215,18 @@ const MachineTable: React.FC = () => {
         <>
             <div className=" mt-20 w-[80%]">
                 <div className="flex justify-between">
-                    <h1 className="text-lg font-semibold pe-5">Machine Master</h1>
+                    <h1 className="text-lg font-semibold pe-5">Style Master</h1>
                     <Badge variant="destructive">
 
                         <Dialog>
                             <DialogTrigger asChild>
-                                <button>Add Machine</button>
+                                <button>Add Style</button>
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-md">
                                 <DialogHeader>
-                                    <DialogTitle>Add Machine</DialogTitle>
+                                    <DialogTitle>Add Style</DialogTitle>
                                     <DialogDescription>
-                                        <MachineAddForm />
+                                        <StyleAddForm />
                                     </DialogDescription>
                                 </DialogHeader>
                                 {/* <DialogFooter className="sm:justify-start">
@@ -239,7 +239,7 @@ const MachineTable: React.FC = () => {
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter project, ModifiedDate, ModifiedBy ..."
+                        placeholder="Filter Style, ModifiedDate, ModifiedBy ..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -347,4 +347,4 @@ const MachineTable: React.FC = () => {
     )
 }
 
-export default MachineTable
+export default StyleMasterTable

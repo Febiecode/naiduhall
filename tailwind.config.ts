@@ -27,6 +27,7 @@ const config = {
         'primary-custom-purple': '#F4ECFB',
         'custom-purple': '#883DCF',
         'primary-blue': '#2BB2FE',
+        'success':'#28a745',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -63,9 +63,14 @@ const items: ISidebarItem[] = [
     icon: Bolt,
   },
   {
-    name: "Line Assign",
-    path: "/lineAssign",
+    name: "Line Master",
+    path: "/lineMaster",
     icon: Settings2Icon,
+  },
+  {
+    name: "Style Master",
+    path: "/styleMaster",
+    icon: FileCog,
   },
   // {
   //   name: "Machine",
