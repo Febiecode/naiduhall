@@ -4,6 +4,7 @@
 
 .customMain {
   width: calc(100% - 264px); /* Adjust for the sidebar width */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +21,7 @@
 @media screen and (max-width: 1020px){
   .customMain {
     width: 100%;
+    min-height: 100vh;
     background-color: #f6f5fb;
   }
   .sidebar {
