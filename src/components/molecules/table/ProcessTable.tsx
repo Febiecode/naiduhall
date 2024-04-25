@@ -60,14 +60,14 @@ import {
 } from "../../../components/ui/dialog"
 import { Badge } from "../../ui/badge"
 
-export type RecentProject = {
+export type ProcessMaster = {
     id: number
     processName: string
     modifiedDate: string
     modifiedBy: string
 }
 
-export const columns: ColumnDef<RecentProject>[] = [
+export const columns: ColumnDef<ProcessMaster>[] = [
 
     {
 
@@ -117,6 +117,7 @@ export const columns: ColumnDef<RecentProject>[] = [
     },
     {
         id: "actions",
+        header: "Action",
         enableHiding: false,
         cell: ({ row }) => {
             console.log(row.getValue(""))
@@ -151,7 +152,7 @@ export const columns: ColumnDef<RecentProject>[] = [
 const ProcessTable: React.FC = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
-    const [data, setData] = React.useState<RecentProject[]>([]);
+    const [data, setData] = React.useState<ProcessMaster[]>([]);
 
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -231,7 +232,7 @@ const ProcessTable: React.FC = () => {
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter project, ModifiedDate, ModifiedBy ..."
+                        placeholder="Filter Process Name, ModifiedDate, ModifiedBy ..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -312,8 +313,9 @@ const ProcessTable: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
-                        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                        {table.getFilteredRowModel().rows.length} row(s) selected.
+                        {/* {table.getFilteredSelectedRowModel().rows.length} of{" "} */}
+                        {/* {table.getFilteredRowModel().rows.length} row(s) selected. */}
+                        {table.getFilteredRowModel().rows.length} row(s) displayed.
                     </div>
                     <div className="space-x-2">
                         <Button

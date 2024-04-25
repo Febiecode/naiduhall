@@ -81,14 +81,14 @@ export const columns: ColumnDef<EmployeeMaster>[] = [
     
     {
         accessorKey: "employeeName",
-        header: "employee Name",
+        header: "Employee Name",
         cell: ({ row }) => (
             <div className="capitalize">{row.getValue("employeeName")}</div>
         ),
     },
     {
         accessorKey: "employeeCode",
-        header: "employee Code",
+        header: "Employee Code",
         cell: ({ row }) => (
             <div className="capitalize">{row.getValue("employeeCode")}</div>
         ),
@@ -125,6 +125,7 @@ export const columns: ColumnDef<EmployeeMaster>[] = [
     },
     {
         id: "actions",
+        header:"Action",
         enableHiding: false,
         cell: ({ row }) => {
             console.log(row.getValue(""))
@@ -137,7 +138,7 @@ export const columns: ColumnDef<EmployeeMaster>[] = [
                             </DialogTrigger>
                             <DialogContent className="sm:max-w-md">
                                 <DialogHeader>
-                                    <DialogTitle>Edit employee</DialogTitle>
+                                    <DialogTitle>Edit Employee</DialogTitle>
                                     <DialogDescription>
                                         <EmployeeEditForm rowid={row.getValue("id")} employeeName={row.getValue("employeeName")} employeeCode={row.getValue("employeeCode")}/>
                                     </DialogDescription>
@@ -171,7 +172,7 @@ const EmployeeMasterTable: React.FC = () => {
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await api.get('/Master/GetemployeeMas');
+                const response = await api.get('/Master/GetEmployeeMas');
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -239,7 +240,7 @@ const EmployeeMasterTable: React.FC = () => {
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter project, ModifiedDate, ModifiedBy ..."
+                        placeholder="Filter Employee Name, Employee Code, ModifiedDate, ModifiedBy ..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -320,8 +321,9 @@ const EmployeeMasterTable: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
-                        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                        {table.getFilteredRowModel().rows.length} row(s) selected.
+                        {/* {table.getFilteredSelectedRowModel().rows.length} of{" "}
+                        {table.getFilteredRowModel().rows.length} row(s) selected. */}
+                        {table.getFilteredRowModel().rows.length} row(s) displayed.
                     </div>
                     <div className="space-x-2">
                         <Button

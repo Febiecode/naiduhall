@@ -60,7 +60,7 @@ import {
 } from "../../../components/ui/dialog"
 import { Badge } from "../../ui/badge"
 
-export type RecentProject = {
+export type MachineMaster = {
     id: number
     machineName: string
     machineCode: string
@@ -68,7 +68,7 @@ export type RecentProject = {
     modifiedBy: string
 }
 
-export const columns: ColumnDef<RecentProject>[] = [
+export const columns: ColumnDef<MachineMaster>[] = [
 
     {
 
@@ -125,6 +125,7 @@ export const columns: ColumnDef<RecentProject>[] = [
     },
     {
         id: "actions",
+        header: "Action",
         enableHiding: false,
         cell: ({ row }) => {
             console.log(row.getValue(""))
@@ -159,7 +160,7 @@ export const columns: ColumnDef<RecentProject>[] = [
 const MachineTable: React.FC = () => {
     const [filter, setFilter] = React.useState('');
     const [date, setDate] = React.useState<Date>()
-    const [data, setData] = React.useState<RecentProject[]>([]);
+    const [data, setData] = React.useState<MachineMaster[]>([]);
 
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
@@ -239,7 +240,7 @@ const MachineTable: React.FC = () => {
                 <div className="flex items-center py-4">
 
                     <Input
-                        placeholder="Filter project, ModifiedDate, ModifiedBy ..."
+                        placeholder="Filter Machine, Machine Code, ModifiedDate, ModifiedBy ..."
                         value={filter}
                         onChange={(e) => setFilter(e.target.value)}
 
@@ -320,8 +321,9 @@ const MachineTable: React.FC = () => {
                 </div>
                 <div className="flex items-center justify-end space-x-2 py-4">
                     <div className="flex-1 text-sm text-muted-foreground">
-                        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-                        {table.getFilteredRowModel().rows.length} row(s) selected.
+                        {/* {table.getFilteredSelectedRowModel().rows.length} of{" "}
+                        {table.getFilteredRowModel().rows.length} row(s) selected. */}
+                        {table.getFilteredRowModel().rows.length} row(s) displayed.
                     </div>
                     <div className="space-x-2">
                         <Button
